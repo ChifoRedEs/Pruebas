@@ -30,7 +30,6 @@ jobs:
             rm "$filename"
           done
 
-
       - name: Guardar los archivos extraídos en el repositorio
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
