@@ -30,10 +30,6 @@ jobs:
             rm "$filename"
           done
 
-      - name: Actualizar índice de barajas y caché sin conexión
-        run: |
-          python3 tools/generar_barajas.py
-          python3 tools/generar_sw.py
 
       - name: Guardar los archivos extraídos en el repositorio
         uses: stefanzweifel/git-auto-commit-action@v5
