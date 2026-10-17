@@ -1,1 +1,41 @@
+name: Descomprimir ZIP automáticamente
 
+on:
+  push:
+    paths:
+      - '**.zip' # Se ejecuta solo cuando detecta que has subido un archivo .zip
+  workflow_dispatch: # Te permite ejecutarlo manualmente por si acaso
+
+permissions:
+  contents: write # Da permiso al bot para guardar los archivos extraídos
+
+jobs:
+  unzip-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Buscar y extraer archivos ZIP
+        run: |
+          # Busca cualquier archivo .zip en el repositorio
+          find . -name "*.zip" -type f | while read filename; do
+            # Obtiene la ruta de la carpeta donde está el zip
+            dir=$(dirname "$filename")
+            
+            # Descomprime el archivo sobreescribiendo si hay archivos viejos
+            unzip -o "$filename" -d "$dir"
+            
+            # Borra el archivo zip original
+            rm "$filename"
+          done
+
+      - name: Actualizar índice de barajas y caché sin conexión
+        run: |
+          python3 tools/generar_barajas.py
+          python3 tools/generar_sw.py
+
+      - name: Guardar los archivos extraídos en el repositorio
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Acción automática: Archivos descomprimidos"
