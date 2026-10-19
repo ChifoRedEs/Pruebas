@@ -1,34 +1,29 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="silicio" data-font="sans">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Magnate Tecnológico</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Aplicaciones</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="board" id="board">
-  <section id="center">
-    <h1>Magnate Tecnológico</h1>
-    <p id="turn"></p>
-    <p id="pot" class="mut"></p>
-    <div class="dice" aria-hidden="true"><span class="die" id="d1">⚀</span><span class="die" id="d2">⚁</span></div>
-    <div class="row">
-      <button id="roll">Tirar dados</button>
-      <button id="manage" class="ghost">Propiedades</button>
-      <button id="trade" class="ghost">Intercambiar</button>
+
+    <!-- Contenedor del fondo animado (Mesh Gradient) -->
+    <div class="mesh-background">
+        <div class="blob color-1"></div>
+        <div class="blob color-2"></div>
+        <div class="blob color-3"></div>
+        <div class="blob color-4"></div>
     </div>
-    <small class="mut">Espacio para tirar</small>
-  </section>
-</main>
-<aside id="side">
-  <div class="row between"><h2>Inversores</h2><span class="row"><button id="new" class="ghost sm">Nueva</button><button id="opts" class="ghost sm">Apariencia</button></span></div>
-  <div id="players"></div>
-  <div id="log" role="log" aria-live="polite"></div>
-</aside>
-<dialog id="dlg"></dialog>
-<script src="js/board.js"></script>
-<script src="js/game.js"></script>
-<script src="js/main.js"></script>
+
+    <!-- Contenedor del menú principal -->
+    <main class="menu-container">
+        <div class="glass-card">
+            <h1>Mis Aplicaciones</h1>
+            <p>Selecciona una herramienta para comenzar</p>
+            <!-- Aquí irían los botones o enlaces de tu Bento Grid -->
+        </div>
+    </main>
+
 </body>
 </html>

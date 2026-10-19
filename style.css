@@ -1,0 +1,134 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Color de fondo oscuro base */
+    background-color: #0b0f19; 
+    overflow: hidden; /* Evita el scroll creado por las formas animadas */
+}
+
+/* =========================================
+   1. FONDO MESH GRADIENT DINÁMICO
+   ========================================= */
+.mesh-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Mantiene el fondo detrás del contenido */
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    /* El secreto del efecto: un desenfoque extremo que funde los colores */
+    filter: blur(100px); 
+    opacity: 0.7;
+    /* Animación genérica para el movimiento fluido */
+    animation: float 15s infinite alternate ease-in-out;
+}
+
+/* Colores y posiciones iniciales de cada forma */
+.color-1 {
+    background: #ff2a5f; /* Rosa/Rojo */
+    width: 50vw;
+    height: 50vw;
+    top: -10%;
+    left: -10%;
+    animation-duration: 12s;
+}
+
+.color-2 {
+    background: #4338ca; /* Azul índigo */
+    width: 60vw;
+    height: 60vw;
+    bottom: -20%;
+    right: -10%;
+    animation-duration: 18s;
+}
+
+.color-3 {
+    background: #14b8a6; /* Turquesa/Teal */
+    width: 40vw;
+    height: 40vw;
+    bottom: 10%;
+    left: 10%;
+    animation-duration: 14s;
+    animation-delay: -5s; /* Empieza la animación en un punto diferente */
+}
+
+.color-4 {
+    background: #9333ea; /* Morado */
+    width: 45vw;
+    height: 45vw;
+    top: 10%;
+    right: 20%;
+    animation-duration: 20s;
+    animation-delay: -2s;
+}
+
+/* Animación de movimiento flotante */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(5vw, 10vh) scale(1.1);
+    }
+    66% {
+        transform: translate(-10vw, 5vh) scale(0.9);
+    }
+    100% {
+        transform: translate(0, -5vh) scale(1.05);
+    }
+}
+
+/* =========================================
+   2. INTERFAZ Y TARJETA GLASSMORPHISM
+   ========================================= */
+.menu-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.glass-card {
+    /* Efecto cristal */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    /* Bordes y sombras sutiles */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    
+    /* Contenido interno */
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+.glass-card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.glass-card p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
