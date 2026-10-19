@@ -3,12 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Aplicaciones</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Menú Principal</title>
+    <style>
+        /* Reseteo básico */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body, html {
+            height: 100%;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow: hidden; /* Evita el scroll */
+        }
+
+        /* 1. FONDO MESH GRADIENT (Ahora con el color oscuro integrado aquí) */
+        .mesh-background {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background-color: #0b0f19; /* Color base oscuro */
+            z-index: 0; /* Capa base correcta */
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px); /* Desenfoque extremo */
+            opacity: 0.8;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        .color-1 { background: #ff2a5f; width: 50vw; height: 50vw; top: -10%; left: -10%; animation-duration: 12s; }
+        .color-2 { background: #4338ca; width: 60vw; height: 60vw; bottom: -20%; right: -10%; animation-duration: 18s; }
+        .color-3 { background: #14b8a6; width: 40vw; height: 40vw; bottom: 10%; left: 10%; animation-duration: 14s; animation-delay: -5s; }
+        .color-4 { background: #9333ea; width: 45vw; height: 45vw; top: 10%; right: 20%; animation-duration: 20s; animation-delay: -2s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(5vw, 10vh) scale(1.1); }
+            66% { transform: translate(-10vw, 5vh) scale(0.9); }
+            100% { transform: translate(0, -5vh) scale(1.05); }
+        }
+
+        /* 2. INTERFAZ Y BENTO GRID */
+        .menu-container {
+            position: relative;
+            z-index: 10; /* Asegura que el menú esté por encima del fondo */
+            width: 100%; 
+            height: 100%;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            padding: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 30px; 
+            font-weight: 600; 
+        }
+
+        /* Estilos de la cuadrícula de botones */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .app-link {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .app-link span { font-size: 2rem; }
+
+        .app-link:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Contenedor del fondo animado (Mesh Gradient) -->
     <div class="mesh-background">
         <div class="blob color-1"></div>
         <div class="blob color-2"></div>
@@ -16,12 +123,28 @@
         <div class="blob color-4"></div>
     </div>
 
-    <!-- Contenedor del menú principal -->
     <main class="menu-container">
         <div class="glass-card">
             <h1>Mis Aplicaciones</h1>
-            <p>Selecciona una herramienta para comenzar</p>
-            <!-- Aquí irían los botones o enlaces de tu Bento Grid -->
+            
+            <div class="bento-grid">
+                <a href="#" class="app-link">
+                    <span>📚</span>
+                    Prácticas CARM
+                </a>
+                <a href="#" class="app-link">
+                    <span>🎲</span>
+                    Juegos de Mesa
+                </a>
+                <a href="#" class="app-link">
+                    <span>🧠</span>
+                    Trivias PDF
+                </a>
+                <a href="#" class="app-link">
+                    <span>⚙️</span>
+                    Otras Utilidades
+                </a>
+            </div>
         </div>
     </main>
 
